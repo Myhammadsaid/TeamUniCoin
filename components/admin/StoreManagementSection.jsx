@@ -246,7 +246,7 @@ export default function StoreManagementSection({
 						>
 							<div className='space-y-1 min-w-0'>
 								<div className='flex items-center gap-2 flex-wrap'>
-									<span className='font-bold text-xs sm:text-sm text-slate-900 truncate'>
+									<span className='font-bold text-sm text-slate-900 line-clamp-2'>
 										{product.title}
 									</span>
 									<span className='text-[10px] font-semibold bg-indigo-100 text-indigo-700 px-2 py-0.5 rounded-full shrink-0'>

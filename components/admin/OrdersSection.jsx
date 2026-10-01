@@ -49,7 +49,7 @@ export default function OrdersSection({ orders, completeOrder }) {
 							className='p-3.5 sm:p-4 bg-slate-50 border border-slate-100 rounded-xl sm:rounded-2xl flex justify-between items-center gap-3'
 						>
 							<div className='min-w-0'>
-								<div className='font-bold text-xs sm:text-sm text-slate-900 truncate'>
+								<div className='font-bold text-sm text-slate-900 truncate'>
 									{order.studentName}
 								</div>
 								<div className='text-[11px] sm:text-xs text-slate-500 flex items-center gap-1.5 mt-0.5 truncate'>
