@@ -8,12 +8,20 @@ export default function AdminLoginPage() {
 
 	const handleLogin = e => {
 		e.preventDefault()
-		// Простой пин-код для защиты админки (можно изменить на нужный)
-		if (passcode === '2026') {
+		const cleanPass = passcode.trim()
+
+		if (cleanPass === 'superadmin') {
+			// Доступ для Super Admin
 			localStorage.setItem('isAdminAuthenticated', 'true')
+			localStorage.setItem('isSuperAdmin', 'true')
+			router.push('/admin/dashboard')
+		} else if (cleanPass === 'admin') {
+			// Доступ для обычного Admin
+			localStorage.setItem('isAdminAuthenticated', 'true')
+			localStorage.setItem('isSuperAdmin', 'false')
 			router.push('/admin/dashboard')
 		} else {
-			alert('Неверный код доступа администратора! (Используйте: 2026)')
+			alert('Неверный пароль! (Обычный admin: admin | Super admin: supper)')
 		}
 	}
 
@@ -25,24 +33,24 @@ export default function AdminLoginPage() {
 						🔒
 					</div>
 					<h1 className='text-2xl font-black text-slate-900'>
-						Staff Portal Login
+						Вход в портал администратора
 					</h1>
 					<p className='text-xs text-slate-400'>
-						Введите PIN-код администратора для доступа
+						Введите пароль для входа в систему
 					</p>
 				</div>
 
 				<form onSubmit={handleLogin} className='space-y-4'>
 					<div>
 						<label className='block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2'>
-							Admin Passcode
+							Пароль администратора
 						</label>
 						<input
 							type='password'
-							placeholder='••••'
+							placeholder='Введите пароль'
 							value={passcode}
 							onChange={e => setPasscode(e.target.value)}
-							className='w-full p-4 bg-slate-50 border border-slate-200 rounded-2xl text-center text-xl tracking-widest font-mono focus:outline-none focus:ring-2 focus:ring-indigo-600'
+							className='w-full p-4 bg-slate-50 border border-slate-200 rounded-2xl text-center text-lg font-mono focus:outline-none focus:ring-2 focus:ring-indigo-600'
 							autoFocus
 						/>
 					</div>
